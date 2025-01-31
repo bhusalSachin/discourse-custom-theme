@@ -1,3 +1,107 @@
+.b-header,
+.brand-header-contents {
+  #brand-logo {
+    max-height: 32px;
+  }
+  h2 {
+    margin: 0;
+  }
+}
+
+.b-header {
+  width: 100%;
+  background-color: var(--tertiary);
+  margin-bottom: 0;
+
+  .title {
+    float: left;
+    margin-right: 24px;
+    .rtl & {
+      margin-left: 24px;
+      margin-right: 0;
+    }
+
+    a {
+      color: var(--secondary);
+      &:visited {
+        color: var(--secondary);
+      }
+    }
+  }
+
+  .wrap {
+    box-sizing: border-box;
+  }
+
+  .contents {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 8px 0;
+  }
+
+  #brand-text-logo {
+    margin: 0;
+  }
+
+  nav.links {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .nav-pills {
+    margin: 0;
+
+    > li > a {
+      min-width: 0;
+      color: var(--secondary);
+      @include ellipsis;
+      &:hover {
+        color: var(--quaternary);
+        background-color: var(--quaternary-low);
+      }
+      &.active > a,
+      > a.active {
+        color: var(--secondary);
+        background-color: var(--quaternary);
+      }
+    }
+  }
+
+  .panel {
+    margin: 0 0 0 auto;
+    .rtl & {
+      margin: 0 auto 0 0;
+    }
+  }
+
+  ul.icons {
+    display: flex;
+    text-align: center;
+    margin: 0 0 0 5px;
+    list-style: none;
+
+    li {
+      margin-left: 0.25em;
+    }
+
+    a {
+      width: 28px;
+      height: 28px;
+      font-size: var(--font-up-1);
+      margin: 2px;
+    }
+  }
+
+  .panel > ul.icons {
+    a,
+    .d-icon {
+      color: var(--secondary);
+    }
+  }
+}
+
+
 // --------------------------------------------------
 // Buttons
 // --------------------------------------------------
@@ -15,7 +119,6 @@
   text-align: center;
   cursor: pointer;
   transition: all 0.25s;
-  background-color: red;
 
   &:active,
   &.btn-active {
@@ -82,7 +185,7 @@
   border: none;
   font-weight: normal;
   color: $secondary;
-  background: $tertiary;
+  background: red;
 
   &[href] {
     color: $secondary;
@@ -90,16 +193,16 @@
   &:hover,
   &.btn-hover {
     color: #fff;
-    background: dark-light-choose($tertiary, $tertiary);
+    background: dark-light-choose(red, green);
   }
   &:active,
   &.btn-active {
-    @include linear-gradient($tertiary, $tertiary);
-    color: $secondary;
+    @include linear-gradient(blue, red);
+    color: green;
   }
   &[disabled],
   &.disabled {
-    background: $tertiary;
+    background: gray;
   }
 }
 
