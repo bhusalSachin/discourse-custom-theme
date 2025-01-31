@@ -1,102 +1,213 @@
-.b-header,
-.brand-header-contents {
-  #brand-logo {
-    max-height: 32px;
+// --------------------------------------------------
+// Buttons
+// --------------------------------------------------
+
+// Base
+// --------------------------------------------------
+
+.btn {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 12px;
+  font-weight: 500;
+  font-size: $font-0;
+  line-height: $line-height-medium;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+
+  &:active,
+  &.btn-active {
+    text-shadow: none;
   }
-  h2 {
-    margin: 0;
+  &[disabled],
+  &.disabled {
+    cursor: default;
+    opacity: 0.4;
+  }
+  .fa {
+    margin-right: 7px;
+  }
+  &.no-text {
+    .fa {
+      margin-right: 0;
+    }
   }
 }
 
-.b-header {
-  width: 100%;
-  background-color: var(--tertiary);
-  margin-bottom: 0;
+.btn.hidden {
+  display: none;
+}
 
-  .title {
-    float: left;
-    margin-right: 24px;
-    .rtl & {
-      margin-left: 24px;
-      margin-right: 0;
+// Default button
+// --------------------------------------------------
+
+.btn {
+  border: none;
+  color: $primary;
+  font-weight: normal;
+  background: $primary-low;
+
+  &[href] {
+    color: $primary;
+  }
+  &:hover,
+  &.btn-hover {
+    background: $primary-medium;
+    color: $secondary;
+  }
+  &[disabled],
+  &.disabled {
+    background: $primary-low;
+    &:hover {
+      color: dark-light-choose($primary-low-mid, $secondary-high);
     }
+    cursor: not-allowed;
+  }
 
-    a {
-      color: var(--secondary);
-      &:visited {
-        color: var(--secondary);
-      }
+  .d-icon {
+    opacity: 0.7;
+    line-height: $line-height-medium; // Match button text line-height
+  }
+  &.btn-primary .d-icon {
+    opacity: 1;
+  }
+}
+
+// Primary button
+// --------------------------------------------------
+
+.btn-primary {
+  border: none;
+  font-weight: normal;
+  color: $secondary;
+  background: $tertiary;
+
+  &[href] {
+    color: $secondary;
+  }
+  &:hover,
+  &.btn-hover {
+    color: #fff;
+    background: dark-light-choose($tertiary, $tertiary);
+  }
+  &:active,
+  &.btn-active {
+    @include linear-gradient($tertiary, $tertiary);
+    color: $secondary;
+  }
+  &[disabled],
+  &.disabled {
+    background: $tertiary;
+  }
+}
+
+// Danger button
+// --------------------------------------------------
+
+.btn-danger {
+  color: $secondary;
+  font-weight: normal;
+  background: $danger;
+  &[href] {
+    color: $secondary;
+  }
+  &:hover,
+  &.btn-hover {
+    background: scale-color($danger, $lightness: -20%);
+  }
+  &:active,
+  &.btn-active {
+    @include linear-gradient(scale-color($danger, $lightness: -20%), $danger);
+  }
+  &[disabled],
+  &.disabled {
+    background: $danger;
+  }
+}
+
+// Social buttons
+// --------------------------------------------------
+
+.btn-social {
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+  &[href] {
+    color: $secondary;
+  }
+  &:before {
+    margin-right: 9px;
+    font-family: FontAwesome;
+    font-size: $font-0;
+  }
+  &.google,
+  &.google_oauth2 {
+    background: $google;
+    &:before {
+      content: $fa-var-google;
     }
   }
-
-  .wrap {
-    box-sizing: border-box;
-  }
-
-  .contents {
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 8px 0;
-  }
-
-  #brand-text-logo {
-    margin: 0;
-  }
-
-  nav.links {
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  .nav-pills {
-    margin: 0;
-
-    > li > a {
-      min-width: 0;
-      color: var(--secondary);
-      @include ellipsis;
-      &:hover {
-        color: var(--quaternary);
-        background-color: var(--quaternary-low);
-      }
-      &.active > a,
-      > a.active {
-        color: var(--secondary);
-        background-color: var(--quaternary);
-      }
+  &.instagram {
+    background: $instagram;
+    &:before {
+      content: $fa-var-instagram;
     }
   }
-
-  .panel {
-    margin: 0 0 0 auto;
-    .rtl & {
-      margin: 0 auto 0 0;
+  &.facebook {
+    background: $facebook;
+    &:before {
+      content: $fa-var-facebook;
     }
   }
-
-  ul.icons {
-    display: flex;
-    text-align: center;
-    margin: 0 0 0 5px;
-    list-style: none;
-
-    li {
-      margin-left: 0.25em;
-    }
-
-    a {
-      width: 28px;
-      height: 28px;
-      font-size: var(--font-up-1);
-      margin: 2px;
+  &.cas {
+    background: $cas;
+  }
+  &.twitter {
+    background: $twitter;
+    &:before {
+      content: $fa-var-twitter;
     }
   }
-
-  .panel > ul.icons {
-    a,
-    .d-icon {
-      color: var(--secondary);
+  &.yahoo {
+    background: $yahoo;
+    &:before {
+      content: $fa-var-yahoo;
     }
+  }
+  &.github {
+    background: $github;
+    &:before {
+      content: $fa-var-github;
+    }
+  }
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+// Small
+
+.btn-small {
+  padding: 3px 6px;
+  font-size: $font-down-1;
+}
+
+// Large
+
+.btn-large {
+  padding: 9px 18px;
+  font-size: $font-up-1;
+  line-height: $line-height-small;
+}
+
+.btn-flat {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  line-height: $line-height-small;
+  .d-icon {
+    opacity: 0.7;
   }
 }
